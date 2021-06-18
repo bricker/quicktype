@@ -119,7 +119,10 @@ export class TypeBuilder {
 
     addTopLevel(name: string, tref: TypeRef): void {
         // assert(t.typeGraph === this.typeGraph, "Adding top-level to wrong type graph");
-        assert(!this.topLevels.has(name), "Trying to add top-level with existing name");
+        // assert(!this.topLevels.has(name), "Trying to add top-level with existing name");
+        if (this.topLevels.has(name)) {
+            return;
+        }
         assert(
             this.types[typeRefIndex(tref)] !== undefined,
             "Trying to add a top-level type that doesn't exist (yet?)"
